@@ -46,7 +46,7 @@ const DealSearch = () => {
   const options2 = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '6adda4dea7msh0d84ee148b8b875p14ba25jsn3fd070b06a7c',
+		'X-RapidAPI-Key': import.meta.env.VITE_KEY,
 		'X-RapidAPI-Host': 'cheapshark-game-deals.p.rapidapi.com'
 	}
 };
