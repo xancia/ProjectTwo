@@ -80,7 +80,7 @@ const DealSearch = () => {
         </div>
 
         <div className="mt-10">
-          {searching ? <p className="text-center font-bold text-3xl p-4 capitalize">Here are the Best Deals for: {input}</p> : <p className="text-center font-bold text-3xl p-4">Check Out These Hot Deals!</p>}
+          {searching ? <p className="text-center font-bold text-3xl p-4 capitalize">the Best Deals for: {input}</p> : <p className="text-center font-bold text-3xl p-4">Check Out These Hot Deals!</p>}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-10">
             {dealData && dealData.map((deal:DealType) => (
                 <GameCard key={deal.dealID} deal={deal}/>

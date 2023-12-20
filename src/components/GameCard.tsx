@@ -8,21 +8,21 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { DealType } from "@/vite-env";
-
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 type GameCardProps = {
-    deal: DealType;
-  };
+  deal: DealType;
+};
 
 const GameCard: React.FC<GameCardProps> = ({ deal }) => {
-    const formatDate = (unixTimestamp:number) => {
-        const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
-        const month = date.getMonth() + 1; // getMonth() returns 0-11
-        const day = date.getDate();
-        const year = date.getFullYear();
-      
-        return `${month}/${day}/${year}`;
-      };
+  const formatDate = (unixTimestamp: number) => {
+    const date = new Date(unixTimestamp * 1000);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    return `${month}/${day}/${year}`;
+  };
 
   return (
     <Card className="w-[300px]">
@@ -41,14 +41,30 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
         </CardDescription>
 
         <CardTitle>{deal.title} </CardTitle>
-        <CardDescription>Release Date: {formatDate(deal.releaseDate)}</CardDescription>
+        <CardDescription>
+          Release Date: {formatDate(deal.releaseDate)}
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="line-through text-gray-500 text-sm">
-          ${deal.normalPrice}
-        </p>
-        <p className="text-green-500 font-bold text-xl">${deal.salePrice}</p>
-        <p>Deal Rating: {deal.dealRating}</p>
+        {Number(deal.dealRating) > 0 ? (
+          <>
+            <p className="line-through text-gray-500 text-sm">
+              ${deal.normalPrice}
+            </p>
+            <p className="text-green-500 font-bold text-xl">
+              ${deal.salePrice}
+            </p>
+            <p>Deal Rating: {deal.dealRating}</p>
+          </>
+        ) : (
+          <>
+            <div className="flex">
+              <p>No Deals Available </p>{" "}
+              <Icon className="ml-1 mt-1" icon="twemoji:anguished-face" />
+            </div>
+            <p>Current Price is: ${deal.salePrice}</p>
+          </>
+        )}
       </CardContent>
       <CardFooter>
         {deal.storeID == "1" ? (
