@@ -9,7 +9,7 @@ export default function Home() {
           <h2 className='text-4xl sm:text-7xl font-bold text-black dark:text-white'>
             Find Your Game Deal
           </h2>
-          <p className='text-gray-500 py-4 max-w-md'>
+          <p className='text-gray-800 dark:text-gray-300 py-4 max-w-md'>
             Here you will be able to search for your desired game and see if there are any deals currently running. Click below to begin!
           </p>
           <div>
