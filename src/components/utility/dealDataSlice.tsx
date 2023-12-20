@@ -1,13 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
+import { DealType } from "@/vite-env";
 
+const initialState: DealType[] | null = null;
 
 const dealDataSlice = createSlice({
     name: 'dealData',
-    initialState: null,
+    initialState,
     reducers: {
-       setdealData: (state,action) => {
-        state = action.payload
-        return state
+       setdealData: (_state,action ) => {
+        return action.payload
        }
        
 }})
