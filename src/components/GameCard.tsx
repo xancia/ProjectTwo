@@ -34,7 +34,7 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
           </span>
           <span className="flex absolute top-0 right-0">
             <img className="w-5" src="/Metacritic_logo_original.svg" alt="" />{" "}
-            <span className="font-bold text-black dark:text-white">
+            <span className="font-bold text-black dark:text-white ml-1">
               {deal.metacriticScore}
             </span>
           </span>

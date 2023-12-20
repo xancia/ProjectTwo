@@ -11,7 +11,7 @@ export default function Home() {
             Find Your Game Deal
           </h2>
           <p className='text-gray-800 dark:text-gray-300 py-4 max-w-md'>
-            Here you will be able to search for your desired game and see if there are any deals currently running. Click below to begin!
+            Here you will be able to search for your desired game and see if there are any deals currently running on Steam, GamersGate, or GreenManGaming. Click below to begin!
           </p>
           <div>
             <Button className='group cursor-pointer' asChild>
