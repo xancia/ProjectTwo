@@ -1,5 +1,6 @@
 import {Icon} from '@iconify/react'
 import { Button } from './ui/button';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -14,10 +15,10 @@ export default function Home() {
           </p>
           <div>
             <Button className='group cursor-pointer' asChild>
-              <a>
+              <Link to='/dealsearch'>
               Deal Search
               <Icon className='group-hover:translate-x-1 duration-300 ml-1' icon="material-symbols:arrow-forward-ios-rounded"/>
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
