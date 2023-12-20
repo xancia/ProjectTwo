@@ -1,7 +1,14 @@
+import { NavBar } from "../NavBar"
+import Container from "../utility/Container"
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>
+        <NavBar />
+        <Container className="pt-28">
+                Contact
+        </Container>
+    </div>
   )
 }
 
