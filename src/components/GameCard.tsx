@@ -29,9 +29,13 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
       <CardHeader>
         <CardDescription className="relative">
           <img className="max-h-12" src={deal.thumb} alt="game thumb" />{" "}
-          <span className="bg-red-500 font-bold text-white absolute top-0 left-0 w-9 h-5">
-            -{Math.floor(deal.savings)}%
-          </span>
+          {Number(deal.dealRating) > 0 && (
+            <>
+              <span className="bg-red-500 font-bold text-white absolute top-0 left-0 w-9 h-5">
+                -{Math.floor(deal.savings)}%
+              </span>
+            </>
+          )}
           <span className="flex absolute top-0 right-0">
             <img className="w-5" src="/Metacritic_logo_original.svg" alt="" />{" "}
             <span className="font-bold text-black dark:text-white ml-1">
