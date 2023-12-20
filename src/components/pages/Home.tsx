@@ -1,7 +1,12 @@
+import GameCard from "../GameCard"
+import { ModeToggle } from "../mode-toggle"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <ModeToggle />
+      <GameCard />
+    </div>
   )
 }
 
