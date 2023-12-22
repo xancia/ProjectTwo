@@ -15,6 +15,9 @@ Redux Toolkit
 
 # API's
 
+CheapShark
+OpenCritic API
+
 
 
 
