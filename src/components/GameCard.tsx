@@ -9,6 +9,7 @@ import {
 import { Button } from "./ui/button";
 import { DealType } from "@/vite-env";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Link } from "react-router-dom";
 
 type GameCardProps = {
   deal: DealType;
@@ -70,7 +71,12 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
           </>
         )}
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex-col items-start">
+        <Button className="mb-2" asChild>
+            <Link to={`/dealsearch/${deal.title}`}>
+                Game Info
+            </Link>
+        </Button>
         {deal.storeID == "1" ? (
           <Button asChild>
             <a
