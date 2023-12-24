@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Home from "./components/pages/Home"
-import Reviews from "./components/pages/Reviews"
+import GamePage from "./components/pages/GamePage"
 import DealSearch from "./components/pages/DealSearch"
 import Contact from "./components/pages/Contact"
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dealsearch" element={<DealSearch />} />
-        <Route path="/dealsearch/:temp" element={<Reviews />} />
+        <Route path="/gamepage" element={<GamePage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </>

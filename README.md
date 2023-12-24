@@ -17,6 +17,7 @@ Redux Toolkit
 
 CheapShark
 OpenCritic API
+RAWG API
 
 
 
