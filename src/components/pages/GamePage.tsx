@@ -3,21 +3,32 @@
 import { useEffect, useState } from "react";
 import { NavBar } from "../NavBar";
 import Container from "../utility/Container";
-import { GameType } from "@/vite-env";
+import { DealType, GameType } from "@/vite-env";
 import { useParams } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import GameInfo from "../GameInfo";
 import { Button } from "../ui/button";
-
+import StoreButton from "../StoreButton";
 
 const GamePage = () => {
   const [gameID, setGameID] = useState("");
   const [game, setGame] = useState<GameType | null>(null);
   const [showText, setShowText] = useState(false);
-  const [fullText, setFullText] = useState("");
   const [shortText, setShortText] = useState("");
+  const [dealData, setdealData] = useState<DealType | null>(null)
   const { title } = useParams();
-  console.log(title);
+
+  const storedDeal = localStorage.getItem("currentDeal");
+
+  useEffect(() => {
+    if (storedDeal) {
+      const data = JSON.parse(storedDeal);
+      console.log(data)
+      setdealData(data)
+    }
+  }, [])
+  
+  
 
   const APIKEY = import.meta.env.VITE_RAWG;
   async function fetchGameID() {
@@ -25,7 +36,6 @@ const GamePage = () => {
       `https://api.rawg.io/api/games?key=${APIKEY}&search=${title}&page_size=1&page=1`
     );
     const data = await res.json();
-    console.log(data.results[0].id);
     setGameID(data.results[0].id);
   }
   async function fetchGameData() {
@@ -34,9 +44,7 @@ const GamePage = () => {
         `https://api.rawg.io/api/games/${gameID}?key=${APIKEY}`
       );
       const gameData = await newRes.json();
-      console.log(gameData);
       setGame(gameData);
-      setFullText(gameData.description_raw);
     } else {
       console.log("game ID not ready yet");
     }
@@ -51,8 +59,8 @@ const GamePage = () => {
   }, [gameID]);
 
   useEffect(() => {
-    setShortText(fullText.slice(0, 200) + "...");
-  }, [fullText]);
+    setShortText(game?.description_raw.slice(0, 200) + "...");
+  }, [game]);
 
   return (
     <div>
@@ -87,6 +95,21 @@ const GamePage = () => {
               )}
             </div>
 
+            
+              {dealData && 
+                  <div>
+                  <p className="line-through text-gray-500 text-sm">
+                     ${dealData.normalPrice}
+                  </p>
+                  <p className="text-green-500 font-bold text-xl">
+                    ${dealData.salePrice}
+                  </p>
+                  <StoreButton deal={dealData}/>
+
+
+                 </div>}
+           
+
             <div>
               <GameInfo title="Developers" content={game.developers} />
               <GameInfo title="Publishers" content={game.publishers} />
@@ -98,7 +121,7 @@ const GamePage = () => {
 
           <p className="py-4 font-bold text-2xl">About</p>
           <p className="text-sm py-4 pt-0">
-            {showText ? fullText : shortText}{" "}
+            {showText ? game.description_raw : shortText}{" "}
             <Button className="h-2 w-20" onClick={() => setShowText(!showText)}>
               {showText ? "Hide text" : "Read more"}
             </Button>

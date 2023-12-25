@@ -12,6 +12,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setcurrentDealData } from "./utility/currentDealDataSlice";
+import StoreButton from "./StoreButton";
 
 type GameCardProps = {
   deal: DealType;
@@ -31,6 +32,7 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
 
   function handleClick() {
     dispatch(setcurrentDealData(deal))
+    localStorage.setItem('currentDeal', JSON.stringify(deal));
   }
 
   return (
@@ -85,45 +87,7 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
                 Game Info
             </Link>
         </Button>
-        {deal.storeID == "1" ? (
-          <Button asChild>
-            <a
-              href={`https://store.steampowered.com/search/?term=${deal.title}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Steam
-            </a>
-          </Button>
-        ) : (
-          ""
-        )}{" "}
-        {deal.storeID == "2" ? (
-          <Button asChild>
-            <a
-              href={`https://www.gamersgate.com/games/?query=${deal.title}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GamersGate
-            </a>
-          </Button>
-        ) : (
-          ""
-        )}{" "}
-        {deal.storeID == "3" ? (
-          <Button asChild>
-            <a
-              href={`https://www.greenmangaming.com/search?query=${deal.title}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GreenManGaming
-            </a>
-          </Button>
-        ) : (
-          ""
-        )}
+        <StoreButton deal={deal}/>
       </CardFooter>
     </Card>
   );
