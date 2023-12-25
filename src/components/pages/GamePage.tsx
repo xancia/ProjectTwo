@@ -108,7 +108,7 @@ const GamePage = () => {
                     </p>
                   </div>
 
-                  <StoreButton className="ml-2 h-12" deal={dealData}/>
+                  <StoreButton variant="outline" className="ml-2 h-12" deal={dealData}/>
                  </div>
 
                  </div>}
