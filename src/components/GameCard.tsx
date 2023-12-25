@@ -82,12 +82,12 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
         )}
       </CardContent>
       <CardFooter className="flex-col items-start">
-        <Button className="mb-2" onClick={handleClick} asChild>
+        <Button variant='outline' className="mb-2" onClick={handleClick} asChild>
             <Link to={`/dealsearch/${deal.title}`}>
                 Game Info
             </Link>
         </Button>
-        <StoreButton deal={deal}/>
+        <StoreButton variant="outline" deal={deal}/>
       </CardFooter>
     </Card>
   );
