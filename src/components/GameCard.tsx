@@ -10,6 +10,8 @@ import { Button } from "./ui/button";
 import { DealType } from "@/vite-env";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setcurrentDealData } from "./utility/currentDealDataSlice";
 
 type GameCardProps = {
   deal: DealType;
@@ -24,6 +26,12 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
 
     return `${month}/${day}/${year}`;
   };
+
+  const dispatch = useDispatch()
+
+  function handleClick() {
+    dispatch(setcurrentDealData(deal))
+  }
 
   return (
     <Card className="w-[300px]">
@@ -72,7 +80,7 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
         )}
       </CardContent>
       <CardFooter className="flex-col items-start">
-        <Button className="mb-2" asChild>
+        <Button className="mb-2" onClick={handleClick} asChild>
             <Link to={`/dealsearch/${deal.title}`}>
                 Game Info
             </Link>

@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import GameInfo from "../GameInfo";
 import { Button } from "../ui/button";
 
+
 const GamePage = () => {
   const [gameID, setGameID] = useState("");
   const [game, setGame] = useState<GameType | null>(null);

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="h-screen w-full bg-gradient-to-b from-gray-50 via-gray-50 to-gray-400 dark:from-slate-950 dark:via-slate-950 dark:to-slate-800 pt-24 md:pt-0 sm:pt-44">
+    <div className="h-screen w-full bg-gradient-to-b from-gray-50 via-gray-50 to-gray-300 dark:from-slate-950 dark:via-slate-950 dark:to-slate-800 pt-24 md:pt-0 sm:pt-44">
       <div className='max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row'>
         <div className='flex flex-col justify-center h-full'>
           <h2 className='text-4xl sm:text-7xl font-bold text-slate-900 dark:text-white'>

@@ -16,6 +16,7 @@ const DealSearch = () => {
   const dispatch = useDispatch();
   const [searching, setSearching] = useState(false)
   const [input, setinput] = useState("")
+  const [titleText, setTitleText] = useState('')
 
   const url =
     "https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=20&exact=0&upperPrice=50&pageNumber=0&onSale=true&metacritic=70&storeID%5B0%5D=1%2C2%2C3";
@@ -66,6 +67,7 @@ const DealSearch = () => {
 
     function handleSubmit() {
         setSearching(true)
+        setTitleText(input)
         fetchSearched()
     }
   
@@ -75,12 +77,12 @@ const DealSearch = () => {
       <NavBar />
       <Container className="pt-28">
         <div className="flex">
-          <Input type="text" placeholder="Search for a specific game" value={input} onChange={(e) => setinput(e.target.value)}/>
-          <Button type="submit" onClick={handleSubmit}>Search</Button>
+          <Input type="text" placeholder="Search for a specific game" value={input} onChange={(e) => setinput(e.target.value)} onKeyDown={(e) => {e.key === 'Enter' && handleSubmit()}}/>
+          <Button className="" type="submit" onClick={handleSubmit}>Search</Button>
         </div>
 
         <div className="mt-10">
-          {searching ? <p className="text-center font-bold text-3xl p-4 capitalize">the Best Deals for: {input}</p> : <p className="text-center font-bold text-3xl p-4">Check Out These Hot Deals!</p>}
+          {searching ? <p className="text-center font-bold text-3xl p-4 capitalize">the Best Deals for: {titleText}</p> : <p className="text-center font-bold text-3xl p-4">Check Out These Hot Deals!</p>}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-2 sm:gap-10">
             {dealData && dealData.map((deal:DealType) => (
                 <GameCard key={deal.dealID} deal={deal}/>
