@@ -70,13 +70,13 @@ const GamePage = () => {
           <img src={game.background_image} alt="" />
           <div>
             <div className="flex">
-              <p className="font-bold text-7xl py-4 text-slate-900 dark:text-white">
+              <p className="font-bold text-2xl sm:text-7xl py-4 text-slate-900 dark:text-white">
                 {game.name}
               </p>
               {game.ratings[0]?.title && (
-                <div className="p-4 mt-3">
+                <div className="p-4 mt-1 sm:mt-3">
                   <div className="flex">
-                    <p className="capitalize font-bold">
+                    <p className="capitalize font-bold text-sm sm:text-lg text-slate-900 dark:text-white">
                       {game.ratings[0].title}
                     </p>{" "}
                     {game.ratings[0].title === "exceptional" ? (
@@ -88,7 +88,7 @@ const GamePage = () => {
                       />
                     )}
                   </div>
-                  <p className="text-gray-500 underline">
+                  <p className="text-gray-500 underline text-sm sm:text-base">
                     {game.ratings[0].count} RATINGS
                   </p>
                 </div>
