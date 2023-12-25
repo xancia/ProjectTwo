@@ -98,14 +98,18 @@ const GamePage = () => {
             
               {dealData && 
                   <div>
-                  <p className="line-through text-gray-500 text-sm">
-                     ${dealData.normalPrice}
-                  </p>
-                  <p className="text-green-500 font-bold text-xl">
-                    ${dealData.salePrice}
-                  </p>
-                  <StoreButton deal={dealData}/>
+                  <div className="flex">
+                  <div className="">
+                    <p className="line-through text-gray-500 text-sm">
+                      ${dealData.normalPrice}
+                    </p>
+                    <p className="text-green-500 font-bold text-xl">
+                      ${dealData.salePrice}
+                    </p>
+                  </div>
 
+                  <StoreButton deal={dealData}/>
+                 </div>
 
                  </div>}
            

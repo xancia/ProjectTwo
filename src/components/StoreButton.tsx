@@ -3,13 +3,14 @@ import { Button } from "./ui/button"
 
 type StoreButtonProps = {
     deal: DealType;
+    className?: string;
   };
 
-const StoreButton: React.FC<StoreButtonProps> = ({deal}) => {
+const StoreButton: React.FC<StoreButtonProps> = ({deal , className}) => {
   return (
     <>
     {deal.storeID == "1" ? (
-        <Button asChild>
+        <Button className={`${className || ""}`} asChild>
           <a
             href={`https://store.steampowered.com/search/?term=${deal.title}`}
             target="_blank"
@@ -22,7 +23,7 @@ const StoreButton: React.FC<StoreButtonProps> = ({deal}) => {
         ""
       )}{" "}
       {deal.storeID == "2" ? (
-        <Button asChild>
+        <Button className={`${className || ""}`} asChild>
           <a
             href={`https://www.gamersgate.com/games/?query=${deal.title}`}
             target="_blank"
@@ -35,7 +36,7 @@ const StoreButton: React.FC<StoreButtonProps> = ({deal}) => {
         ""
       )}{" "}
       {deal.storeID == "3" ? (
-        <Button asChild>
+        <Button className={`${className || ""}`} asChild>
           <a
             href={`https://www.greenmangaming.com/search?query=${deal.title}`}
             target="_blank"
