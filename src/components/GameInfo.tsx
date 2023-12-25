@@ -3,7 +3,7 @@ import { Fragment } from "react"
 
 const GameInfo = ({title, content}:any) => {
   return (
-    <div className="p-4">
+    <div className="py-4">
               <p className="text-slate-500 dark:text-gray-500 text-sm">{title}</p> 
               <div className="flex mt-1 flex-wrap">
               {content.map((ctx:any) => (

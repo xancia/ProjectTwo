@@ -29,7 +29,7 @@ export const NavBar = () => {
   return (
     <div className='flex justify-between items-center w-full h-20 fixed px-4 z-10 bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white'>
         <div>
-            <h1 className='font-pacifico text-4xl ml-2'>Video Game Deals</h1>
+            <h1 className='font-pacifico text-4xl ml-2'>PC Game Deals</h1>
         </div>
 
         <ul className='hidden md:flex md:items-center'>
