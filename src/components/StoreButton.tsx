@@ -1,16 +1,18 @@
 import { DealType } from "@/vite-env"
 import { Button } from "./ui/button"
 
+
 type StoreButtonProps = {
     deal: DealType;
     className?: string;
+    variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
   };
 
-const StoreButton: React.FC<StoreButtonProps> = ({deal , className}) => {
+const StoreButton: React.FC<StoreButtonProps> = ({deal , className, variant}) => {
   return (
     <>
     {deal.storeID == "1" ? (
-        <Button className={`${className || ""}`} asChild>
+        <Button variant={variant} className={className} asChild>
           <a
             href={`https://store.steampowered.com/search/?term=${deal.title}`}
             target="_blank"
@@ -23,7 +25,7 @@ const StoreButton: React.FC<StoreButtonProps> = ({deal , className}) => {
         ""
       )}{" "}
       {deal.storeID == "2" ? (
-        <Button className={`${className || ""}`} asChild>
+        <Button variant={variant} className={className} asChild>
           <a
             href={`https://www.gamersgate.com/games/?query=${deal.title}`}
             target="_blank"
@@ -36,7 +38,7 @@ const StoreButton: React.FC<StoreButtonProps> = ({deal , className}) => {
         ""
       )}{" "}
       {deal.storeID == "3" ? (
-        <Button className={`${className || ""}`} asChild>
+        <Button variant={variant} className={className} asChild>
           <a
             href={`https://www.greenmangaming.com/search?query=${deal.title}`}
             target="_blank"
