@@ -5,10 +5,16 @@ import { NavBar } from "../NavBar"
 import Container from "../utility/Container"
 import { GameType } from "@/vite-env"
 import { useParams } from "react-router-dom"
+import { Icon } from "@iconify/react/dist/iconify.js"
+import GameInfo from "../GameInfo"
+import { Button } from "../ui/button"
 
 const GamePage = () => {
   const [gameID,setGameID] = useState('')
   const [game, setGame] = useState<GameType | null>(null)
+  const [showText, setShowText] = useState(false)
+  const [fullText, setFullText] = useState('')
+  const [shortText, setShortText] = useState('')
   const {title} = useParams()
   console.log(title)
  
@@ -25,6 +31,8 @@ const GamePage = () => {
     const gameData = await newRes.json()
     console.log(gameData)
     setGame(gameData)
+    setFullText(gameData.description_raw)
+    setShortText(fullText.slice(0,400) + "...")
     } else {
       console.log("game ID not ready yet")
     }
@@ -47,13 +55,34 @@ const GamePage = () => {
       {game && 
       <Container className="pt-20">
         <img src={game.background_image} alt="" />
-        <p className="font-bold text-4xl p-4">{game.name}</p>
-        <p>Developers: {game.developers.map((dev:any) => (dev.name + ' '))}</p>
-        <p>Publishers: {game.publishers.map((publisher:any) => (publisher.name + ' '))}</p>
-        <p>Genres: {game.genres.map((genre:any) => (genre.name + ' '))}</p>
-        {game.ratings[0]?.title && <p>Rated {game.ratings[0].title} by {game.ratings[0].count} people</p>}
-        <p>Available on: {game.platforms.map((platform:any) => (platform.platform.name + ' '))}</p>
-        <p className="text-sm">Description: {game.description_raw}</p>
+        <div>
+          <p className="font-bold text-7xl p-4 text-slate-900 dark:text-white">{game.name}</p>
+          {game.ratings[0]?.title && <div className="p-4">
+          <div className="flex">
+            <p className="capitalize font-bold">{game.ratings[0].title}</p> {game.ratings[0].title === 'exceptional' ? <Icon className="ml-1 mt-1" icon='twemoji:bullseye'/> : <Icon className="ml-1 mt-1" icon='twemoji:check-mark-button'/>}
+          </div>
+          <p className="text-gray-500 underline">{game.ratings[0].count} RATINGS</p>
+
+          </div>}
+
+          <div>
+            <GameInfo title='Developers' content={game.developers}/>
+            <GameInfo title='Publishers' content={game.publishers}/>
+            <GameInfo title='Genres' content={game.genres}/>
+            <GameInfo title='Available On' content={game.platforms}/>
+            <GameInfo title='Tags' content={game.tags}/>
+
+
+
+           
+          </div>
+
+
+        </div>
+        <p className="p-4 font-bold text-2xl">About</p> 
+        <p className="text-sm p-4 pt-0">{showText ? fullText : shortText} <Button className="h-2 w-20" onClick={() => setShowText(!showText)}>{showText ? 'Hide text' : 'Read more'}</Button></p>
+        
+
         <p>Tags: {game.tags.map((tag:any) => {
           if(tag.language === 'eng') {
             return <Fragment key={tag.id}><span className="underline">{tag.name}</span> <span></span></Fragment>

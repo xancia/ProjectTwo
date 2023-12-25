@@ -27,14 +27,14 @@ export const NavBar = () => {
     ]
 
   return (
-    <div className='flex justify-between items-center w-full h-20 fixed px-4 z-10 bg-gray-50 dark:bg-slate-950 text-black dark:text-white'>
+    <div className='flex justify-between items-center w-full h-20 fixed px-4 z-10 bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white'>
         <div>
             <h1 className='font-pacifico text-4xl ml-2'>Video Game Deals</h1>
         </div>
 
         <ul className='hidden md:flex md:items-center'>
             {links.map(({id, link, href}) => 
-                (<li key={id} className='px-4 cursor-pointer capitalize font-medium text-black dark:text-white hover:scale-105 duration-200'><Link to={href}>{link}</Link></li>)
+                (<li key={id} className='px-4 cursor-pointer capitalize font-medium text-slate-900 dark:text-white hover:scale-105 duration-200'><Link to={href}>{link}</Link></li>)
             )}
             <ModeToggle />
         </ul>
