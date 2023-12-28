@@ -15,7 +15,7 @@ const GamePage = () => {
   const [game, setGame] = useState<GameType | null>(null);
   const [showText, setShowText] = useState(false);
   const [shortText, setShortText] = useState("");
-  const [dealData, setdealData] = useState<DealType | null>(null)
+  const [dealData, setdealData] = useState<DealType | null>(null);
   const { title } = useParams();
 
   const storedDeal = localStorage.getItem("currentDeal");
@@ -23,12 +23,10 @@ const GamePage = () => {
   useEffect(() => {
     if (storedDeal) {
       const data = JSON.parse(storedDeal);
-      console.log(data)
-      setdealData(data)
+      console.log(data);
+      setdealData(data);
     }
-  }, [])
-  
-  
+  }, []);
 
   const APIKEY = import.meta.env.VITE_RAWG;
   async function fetchGameID() {
@@ -95,10 +93,9 @@ const GamePage = () => {
               )}
             </div>
 
-            
-              {dealData && 
-                  <div>
-                  <div className="flex">
+            {dealData && (
+              <div>
+                <div className="flex">
                   <div className="">
                     <p className="line-through text-gray-500 text-sm">
                       ${dealData.normalPrice}
@@ -108,11 +105,14 @@ const GamePage = () => {
                     </p>
                   </div>
 
-                  <StoreButton variant="outline" className="ml-2 h-12" deal={dealData}/>
-                 </div>
-
-                 </div>}
-           
+                  <StoreButton
+                    variant="outline"
+                    className="ml-2 h-12"
+                    deal={dealData}
+                  />
+                </div>
+              </div>
+            )}
 
             <div>
               <GameInfo title="Developers" content={game.developers} />

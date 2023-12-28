@@ -28,11 +28,11 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
     return `${month}/${day}/${year}`;
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(setcurrentDealData(deal))
-    localStorage.setItem('currentDeal', JSON.stringify(deal));
+    dispatch(setcurrentDealData(deal));
+    localStorage.setItem("currentDeal", JSON.stringify(deal));
   }
 
   return (
@@ -82,12 +82,15 @@ const GameCard: React.FC<GameCardProps> = ({ deal }) => {
         )}
       </CardContent>
       <CardFooter className="flex-col items-start">
-        <Button variant='outline' className="mb-2" onClick={handleClick} asChild>
-            <Link to={`/dealsearch/${deal.title}`}>
-                Game Info
-            </Link>
+        <Button
+          variant="outline"
+          className="mb-2"
+          onClick={handleClick}
+          asChild
+        >
+          <Link to={`/dealsearch/${deal.title}`}>Game Info</Link>
         </Button>
-        <StoreButton variant="outline" deal={deal}/>
+        <StoreButton variant="outline" deal={deal} />
       </CardFooter>
     </Card>
   );
