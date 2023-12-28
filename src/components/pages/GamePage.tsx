@@ -17,18 +17,10 @@ const GamePage = () => {
   const [shortText, setShortText] = useState("");
   const [dealData, setdealData] = useState<DealType | null>(null);
   const { title } = useParams();
-
   const storedDeal = localStorage.getItem("currentDeal");
 
-  useEffect(() => {
-    if (storedDeal) {
-      const data = JSON.parse(storedDeal);
-      console.log(data);
-      setdealData(data);
-    }
-  }, []);
-
   const APIKEY = import.meta.env.VITE_RAWG;
+
   async function fetchGameID() {
     const res = await fetch(
       `https://api.rawg.io/api/games?key=${APIKEY}&search=${title}&page_size=1&page=1`
@@ -50,6 +42,11 @@ const GamePage = () => {
 
   useEffect(() => {
     fetchGameID();
+    if (storedDeal) {
+      const data = JSON.parse(storedDeal);
+      console.log(data);
+      setdealData(data);
+    }
   }, []);
 
   useEffect(() => {
@@ -59,6 +56,8 @@ const GamePage = () => {
   useEffect(() => {
     setShortText(game?.description_raw.slice(0, 200) + "...");
   }, [game]);
+
+
 
   return (
     <div>
