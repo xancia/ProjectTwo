@@ -87,7 +87,7 @@ const DealSearch = () => {
               e.key === "Enter" && handleSubmit();
             }}
           />
-          <Button className="" type="submit" onClick={handleSubmit}>
+          <Button className="mx-2" type="submit" onClick={handleSubmit}>
             Search
           </Button>
         </div>
