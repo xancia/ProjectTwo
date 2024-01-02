@@ -34,6 +34,7 @@ const GamePage = () => {
         `https://api.rawg.io/api/games/${gameID}?key=${APIKEY}`
       );
       const gameData = await newRes.json();
+      console.log(gameData)
       setGame(gameData);
     } else {
       console.log("game ID not ready yet");
@@ -76,12 +77,25 @@ const GamePage = () => {
                     <p className="capitalize font-bold text-sm sm:text-lg text-slate-900 dark:text-white">
                       {game.ratings[0].title}
                     </p>{" "}
-                    {game.ratings[0].title === "exceptional" ? (
+                    {game.ratings[0].title === "exceptional" && (
                       <Icon className="ml-1 mt-1" icon="twemoji:bullseye" />
-                    ) : (
+                    )}
+                    {game.ratings[0].title === "recommended" && (
                       <Icon
                         className="ml-1 mt-1"
                         icon="twemoji:check-mark-button"
+                      />
+                    )}
+                    {game.ratings[0].title === "meh" && (
+                      <Icon
+                        className="ml-1 mt-1"
+                        icon="twemoji:confused-face"
+                      />
+                    )}
+                    {game.ratings[0].title === "skip" && (
+                      <Icon
+                        className="ml-1 mt-1"
+                        icon="twemoji:cross-mark"
                       />
                     )}
                   </div>
