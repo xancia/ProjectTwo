@@ -10,6 +10,7 @@ import { setdealData } from "../utility/dealDataSlice";
 import { useEffect, useState } from "react";
 import { DealType } from "@/vite-env";
 import { RootState } from "../utility/store";
+import DisplaySelect from "../DisplaySelect";
 
 const DealSearch = () => {
   const dealData = useSelector(
@@ -19,9 +20,10 @@ const DealSearch = () => {
   const [searching, setSearching] = useState(false);
   const [input, setinput] = useState("");
   const [titleText, setTitleText] = useState("");
+  const [display, setDisplay] = useState(10);
 
   const url =
-    "https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=20&exact=0&upperPrice=50&pageNumber=0&onSale=true&metacritic=70&storeID%5B0%5D=1%2C2%2C3";
+    "https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=100&exact=0&upperPrice=50&pageNumber=0&onSale=true&metacritic=70&storeID%5B0%5D=1%2C2%2C3";
   const options = {
     method: "GET",
     headers: {
@@ -100,11 +102,16 @@ const DealSearch = () => {
               Check Out These Hot Deals!
             </p>
           )}
+
+          <DisplaySelect setDisplay={setDisplay} />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-2 sm:gap-10">
             {dealData &&
-              dealData.map((deal: DealType) => (
-                <GameCard key={deal.dealID} deal={deal} />
-              ))}
+              dealData.map((deal: DealType, index: number) => {
+                if (index < display) {
+                  return <GameCard key={deal.dealID} deal={deal} />;
+                }
+              })}
           </div>
         </div>
       </Container>
