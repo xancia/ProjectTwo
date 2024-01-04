@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard"
-import { ReviewType } from "@/vite-env";
 
 type ReviewsProps = {
     title: string | undefined
@@ -66,13 +65,9 @@ const Reviews: React.FC<ReviewsProps> = ({title}) => {
     <div>
 
         {reviews.length > 1 &&
-        <>
-        {title}
-
-        {reviews.map((review:ReviewType) => (
-            <ReviewCard key={review._id} review={review}/>
-        ))}
-        </>
+        <div className="flex justify-center">
+        <ReviewCard reviews={reviews}/>
+        </div>
         }
     </div>
   )

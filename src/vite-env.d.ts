@@ -36,6 +36,6 @@ export type ReviewType = {
     alias: string,
     externalUrl: string,
     score: number,
-    snipet: string,
+    snippet: string,
     _id: string,
 }
