@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import GameInfo from "../GameInfo";
 import { Button } from "../ui/button";
 import StoreButton from "../StoreButton";
+import Reviews from "../Reviews";
 
 const GamePage = () => {
   const [gameID, setGameID] = useState("");
@@ -143,6 +144,10 @@ const GamePage = () => {
               {showText ? "Hide text" : "Read more"}
             </Button>
           </p>
+
+
+          <Reviews />
+
         </Container>
       )}
     </div>
