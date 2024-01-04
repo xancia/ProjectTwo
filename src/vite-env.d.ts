@@ -29,3 +29,13 @@ export type GameType = {
     description_raw: string,
     tags: []
 }
+
+export type ReviewType = {
+    Authors: [],
+    Outlet: {name:string, imageSrc: {og: string, sm: string, lg: string}},
+    alias: string,
+    externalUrl: string,
+    score: number,
+    snipet: string,
+    _id: string,
+}

@@ -146,7 +146,7 @@ const GamePage = () => {
           </p>
 
 
-          <Reviews />
+          <Reviews title={title} />
 
         </Container>
       )}

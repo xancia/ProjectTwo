@@ -1,8 +1,12 @@
+import { ReviewType } from "@/vite-env"
 
+type ReviewCardProps = {
+    review: ReviewType;
+  };
 
-const ReviewCard = () => {
+const ReviewCard: React.FC<ReviewCardProps> = ({review}) => {
   return (
-    <div>ReviewCard</div>
+    <div>{review.score}</div>
   )
 }
 
