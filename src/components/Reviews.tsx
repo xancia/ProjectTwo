@@ -23,6 +23,10 @@ const Reviews: React.FC<ReviewsProps> = ({ title }) => {
   async function fetchReviewID() {
     try {
       const response = await fetch(url, options);
+      if (response.status === 429) {
+        console.log("Daily limit reached");
+        return;
+      }
       const result = await response.json();
       console.log(result);
       console.log(title);
