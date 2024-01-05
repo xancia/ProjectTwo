@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "./ui/button";
 
 type ReviewCardProps = {
   reviews: ReviewType[];
@@ -54,6 +55,16 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ reviews }) => {
                   </div>
 
                   <p className="text-xs mt-2">{review.snippet}</p>
+
+                  <Button variant="outline" className="mt-4 w-36" asChild>
+                    <a
+                      href={review.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Read Full Review
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             </div>
