@@ -37,7 +37,6 @@ const DealSearch = () => {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
       dispatch(setdealData(result));
     } catch (error) {
       console.error(error);

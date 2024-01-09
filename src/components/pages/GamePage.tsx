@@ -35,7 +35,6 @@ const GamePage = () => {
         `https://api.rawg.io/api/games/${gameID}?key=${APIKEY}`
       );
       const gameData = await newRes.json();
-      console.log(gameData)
       setGame(gameData);
     } else {
       console.log("game ID not ready yet");
@@ -46,7 +45,6 @@ const GamePage = () => {
     fetchGameID();
     if (storedDeal) {
       const data = JSON.parse(storedDeal);
-      console.log(data);
       setdealData(data);
     }
   }, []);

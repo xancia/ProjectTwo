@@ -28,13 +28,10 @@ const Reviews: React.FC<ReviewsProps> = ({ title }) => {
         return;
       }
       const result = await response.json();
-      console.log(result);
-      console.log(title);
       const filteredArr = result.filter(
         (game: { name: string }) =>
           game.name.toLowerCase() == title?.toLowerCase()
       );
-      console.log(filteredArr);
       if (filteredArr[0]?.id) {
         setReviewID(filteredArr[0].id);
       }
@@ -60,7 +57,6 @@ const Reviews: React.FC<ReviewsProps> = ({ title }) => {
     try {
       const response = await fetch(url2, options2);
       const result = await response.json();
-      console.log(result);
       setReviews(result);
     } catch (error) {
       console.error(error);
