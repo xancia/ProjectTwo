@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { DealType } from "@/vite-env";
 import { RootState } from "../utility/store";
 import DisplaySelect from "../DisplaySelect";
+import { Skeleton } from "../ui/skeleton";
 
 const DealSearch = () => {
   const dealData = useSelector(
@@ -106,12 +107,15 @@ const DealSearch = () => {
           <DisplaySelect setDisplay={setDisplay} />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-2 sm:gap-10">
-            {Array.isArray(dealData) &&
+            {Array.isArray(dealData) ?
               dealData.map((deal: DealType, index: number) => {
                 if (index < display) {
                   return <GameCard key={deal.dealID} deal={deal} />;
                 }
-              })}
+              }) :
+              Array.from({ length: 5 }).map((_,index) => (
+                <Skeleton key={index} className="w-[250px] h-[350px] rounded-md" />
+              ))}
           </div>
         </div>
       </Container>
