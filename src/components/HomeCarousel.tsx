@@ -93,7 +93,7 @@ const HomeCarousel = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex flex-col items-center justify-between p-0">
-                    {game.length > 2 ? <img src={game[index]} alt="placeholder" /> : <Skeleton className="w-[350px] h-[200px] rounded-md m-4" />}
+                    {game.length > 2 ? <img src={game[index]} alt="game bg" /> : <Skeleton className="w-[350px] h-[200px] rounded-md m-4" />}
 
                     <div className="flex justify-between w-full items-center bg-gray-300 dark:bg-slate-800 px-4 py-2">
                       <p className="font-bold">{deal.title}</p>
