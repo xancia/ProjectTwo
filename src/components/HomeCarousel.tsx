@@ -28,7 +28,6 @@ const HomeCarousel = () => {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
       setDealData(result);
     } catch (error) {
       console.error(error);
@@ -60,12 +59,10 @@ const HomeCarousel = () => {
   async function getGameImage() {
     if (Array.isArray(dealData)) {
       try {
-        // Fetch all game IDs
         const ids = await Promise.all(
-          dealData.map((deal:DealType) => fetchGameID(deal.title))
+          dealData.map((deal: DealType) => fetchGameID(deal.title))
         );
 
-        // Fetch game data for each ID and update the state
         const gameImages = await Promise.all(
           ids.map((id) => fetchGameData(id))
         );
@@ -81,8 +78,6 @@ const HomeCarousel = () => {
     getGameImage();
   }, [dealData]);
 
-  console.log(game)
-  
   return (
     <Carousel
       opts={{
