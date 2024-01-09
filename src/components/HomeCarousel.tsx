@@ -89,7 +89,7 @@ const HomeCarousel = () => {
       <CarouselContent>
         {Array.isArray(dealData) &&
           dealData.map((deal: DealType, index: number) => (
-            <CarouselItem key={index} className="">
+            <CarouselItem key={index} className="flex items-center">
               <div className="p-1">
                 <Card>
                   <CardContent className="flex flex-col items-center justify-between p-0">
