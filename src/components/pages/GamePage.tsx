@@ -10,6 +10,7 @@ import GameInfo from "../GameInfo";
 import { Button } from "../ui/button";
 import StoreButton from "../StoreButton";
 import Reviews from "../Reviews";
+import { Skeleton } from "../ui/skeleton";
 
 const GamePage = () => {
   const [gameID, setGameID] = useState("");
@@ -57,12 +58,10 @@ const GamePage = () => {
     setShortText(game?.description_raw.slice(0, 200) + "...");
   }, [game]);
 
-
-
   return (
     <div>
       <NavBar />
-      {game && (
+      {game ? (
         <Container className="pt-20">
           <img src={game.background_image} alt="" />
           <div>
@@ -92,10 +91,7 @@ const GamePage = () => {
                       />
                     )}
                     {game.ratings[0].title === "skip" && (
-                      <Icon
-                        className="ml-1 mt-1"
-                        icon="twemoji:cross-mark"
-                      />
+                      <Icon className="ml-1 mt-1" icon="twemoji:cross-mark" />
                     )}
                   </div>
                   <p className="text-gray-500 underline text-sm sm:text-base">
@@ -143,10 +139,19 @@ const GamePage = () => {
             </Button>
           </p>
 
-
           <Reviews title={title} />
-
         </Container>
+      ) : (
+        <div className="flex flex-col items-center justify-center h-screen">
+          <Skeleton className="w-[292px] h-[164px] lg:w-[992px] lg:h-[558px] rounded-md" />
+          <div className="flex space-x-4 mt-10">
+            <Skeleton className="h-12 w-12 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-[250px]" />
+              <Skeleton className="h-4 w-[200px]" />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
