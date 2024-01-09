@@ -9,6 +9,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { DealType } from "@/vite-env";
+import { Skeleton } from "./ui/skeleton";
 
 const HomeCarousel = () => {
   const [dealData, setDealData] = useState<[] | null>(null);
@@ -92,7 +93,7 @@ const HomeCarousel = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex flex-col items-center justify-between p-0">
-                    <img src={game[index]} alt="placeholder" />
+                    {game.length > 2 ? <img src={game[index]} alt="placeholder" /> : <Skeleton className="w-[350px] h-[200px] rounded-md m-4" />}
 
                     <div className="flex justify-between w-full items-center bg-gray-300 dark:bg-slate-800 px-4 py-2">
                       <p className="font-bold">{deal.title}</p>
