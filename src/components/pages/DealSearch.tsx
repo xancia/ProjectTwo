@@ -114,7 +114,7 @@ const DealSearch = () => {
                 }
               }) :
               Array.from({ length: 5 }).map((_,index) => (
-                <Skeleton key={index} className="w-[250px] h-[350px] rounded-md" />
+                <Skeleton key={index} className="w-[300px] h-[382px] rounded-md" />
               ))}
           </div>
         </div>
