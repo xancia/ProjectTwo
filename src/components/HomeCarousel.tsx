@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { DealType } from "@/vite-env";
 import { Skeleton } from "./ui/skeleton";
+import Autoplay from "embla-carousel-autoplay"
 
 const HomeCarousel = () => {
   const [dealData, setDealData] = useState<[] | null>(null);
@@ -85,6 +86,11 @@ const HomeCarousel = () => {
         align: "start",
       }}
       className="w-56 md:w-96"
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
     >
       <CarouselContent>
         {Array.isArray(dealData) &&
