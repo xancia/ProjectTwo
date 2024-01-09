@@ -15,7 +15,7 @@ const Reviews: React.FC<ReviewsProps> = ({ title }) => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "6adda4dea7msh0d84ee148b8b875p14ba25jsn3fd070b06a7c",
+      "X-RapidAPI-Key": import.meta.env.VITE_OPENCRITIC,
       "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
     },
   };
@@ -48,7 +48,7 @@ const Reviews: React.FC<ReviewsProps> = ({ title }) => {
   const options2 = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "6adda4dea7msh0d84ee148b8b875p14ba25jsn3fd070b06a7c",
+      "X-RapidAPI-Key": import.meta.env.VITE_OPENCRITIC,
       "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
     },
   };
