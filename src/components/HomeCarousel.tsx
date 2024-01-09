@@ -16,7 +16,7 @@ const HomeCarousel = () => {
   const [game, setGame] = useState<string[]>([]);
 
   const url =
-    "https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=5&exact=0&upperPrice=50&pageNumber=0&onSale=true&metacritic=70&storeID%5B0%5D=1%2C2%2C3";
+    "https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=5&exact=0&upperPrice=50&pageNumber=0&onSale=true&metacritic=85&storeID%5B0%5D=1%2C2%2C3";
   const options = {
     method: "GET",
     headers: {
